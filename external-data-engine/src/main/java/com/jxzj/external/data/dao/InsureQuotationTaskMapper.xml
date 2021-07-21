@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jxzj.external.data.dao.InsureQuotationTaskMapper">
+
+    <resultMap id="BaseResultMap" type="com.jxzj.external.data.entity.InsureQuotationTask">
+        <result column="id" jdbcType="BIGINT" property="id"/>
+        <result column="customerName" jdbcType="VARCHAR" property="customer_name"/>
+        <result column="idCard" jdbcType="VARCHAR" property="id_card"/>
+        <result column="vehicleLicense" jdbcType="VARCHAR" property="vehicle_license"/>
+        <result column="engineNo" jdbcType="VARCHAR" property="engine_no"/>
+        <result column="vehicleFrameNo" jdbcType="TIMESTAMP" property="vehicle_frame_no"/>
+        <result column="firstRegisterDate" jdbcType="DATE" property="first_register_date"/>
+        <result column="state" jdbcType="INTEGER" property="state"/>
+        <result column="remark" jdbcType="VARCHAR" property="remark"/>
+        <result column="premium" jdbcType="VARCHAR" property="premium"/>
+        <result column="taxPayMentTotal" jdbcType="VARCHAR" property="tax_payMent_total"/>
+        <result column="curbWeight" jdbcType="VARCHAR" property="curb_weight"/>
+        <result column="insuranceTimeLimitBegin" jdbcType="VARCHAR" property="insurance_time_limit_begin"/>
+        <result column="insuranceTimeLimitEnd" jdbcType="VARCHAR" property="insurance_time_limit_end"/>
+        <result column="createTime" jdbcType="TIMESTAMP" property="create_time"/>
+        <result column="updateTime" jdbcType="TIMESTAMP" property="create_time"/>
+    </resultMap>
+
+
+   <select id="queryInsureQuotaionTask" resultMap="BaseResultMap">
+       SELECT
+        customer_name, id_card, 
+        vehicle_license, engine_no, vehicle_frame_no, first_register_date, curb_weight FROM 
+       insure_quotation_task
+       WHERE state = 1
+    </select>
+    
+    <update id="updateInsureQuotationTaskByVehicleFrameNo" parameterType="com.jxzj.external.data.entity.InsureQuotationTask">
+        UPDATE insure_quotation_task 
+        <set>
+            <if test="state != null">
+                state = #{state, jdbcType=INTEGER},
+            </if>
+            <if test="remark != null">
+                remark = #{remark, jdbcType=VARCHAR},
+            </if>
+            <if test="premium != null">
+                premium = #{premium, jdbcType=VARCHAR},
+            </if>
+            <if test="taxPaymentTotal != null">
+                tax_payment_total = #{taxPaymentTotal, jdbcType=VARCHAR}
+            </if>
+        </set>         
+        WHERE vehicle_frame_no = #{vehicleFrameNo, jdbcType=VARCHAR}
+    </update>
+    
+</mapper>

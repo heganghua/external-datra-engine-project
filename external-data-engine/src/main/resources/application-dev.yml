@@ -1,0 +1,10 @@
+spring:
+  datasource:
+    hikari:
+      maximum-pool-size: 100
+database:
+  username: 
+  password: 
+  host: 
+  port: 
+

@@ -1,0 +1,37 @@
+spring:
+  profiles: 
+    # dev | product | test   
+    active: dev
+  datasource:
+    name: spider-engine
+    username: ${database.username}
+    password: ${database.password}
+    url: jdbc:mysql://${database.host}:${database.port}/${database.dbname}?useSSL=false
+    type: com.zaxxer.hikari.HikariDataSource
+    hikari:
+      connection-timeout: 10000
+      idle-timeout: 600000
+      max-lifetime: 3600000
+mybatis:
+  mapper-locations:
+  - classpath:com/jxzj/spider/dao/*.xml
+  type-aliases-package: com.jxzj.spider.entity
+dubbo:
+  application:
+    id: spider-provider
+    name: spider-provider
+    qosEnable: false
+  protocol:
+    id: dubbo
+    name: dubbo
+    port: 22406
+    status: server
+    threads: 500
+  registry:
+    id: jxzj-registry
+  scan:
+    base-packages:
+    - com.jxzj.spider.service
+  consumer:
+    check: false
+    timeout: 5000

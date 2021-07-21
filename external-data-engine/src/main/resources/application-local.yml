@@ -1,0 +1,13 @@
+spring:
+  datasource:
+    hikari:
+      maximum-pool-size: 100 
+database:
+  username: root
+  password: 123
+  host: 172.16.30.18
+  port: 3306
+  dbname: 
+dubbo:
+  registry:
+    address: zookeeper://127.0.0.1:2181
