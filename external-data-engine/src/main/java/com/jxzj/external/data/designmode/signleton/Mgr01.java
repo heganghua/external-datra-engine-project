@@ -1,4 +1,4 @@
-package com.jxzj.external.data.singleton;
+package com.jxzj.external.data.designmode.signleton;
 
 public class Mgr01 {
 

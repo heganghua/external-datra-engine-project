@@ -1,9 +1,9 @@
-package com.jxzj.external.data.temp.chain.rule;
+package com.jxzj.external.data.designmode.filterchain.rule;
 
-import com.jxzj.external.data.temp.chain.Alarm;
-import com.jxzj.external.data.temp.chain.EnableFilter;
-import com.jxzj.external.data.temp.chain.Filter;
-import com.jxzj.external.data.temp.chain.FilterChain;
+import com.jxzj.external.data.designmode.filterchain.Alarm;
+import com.jxzj.external.data.designmode.filterchain.EnableFilter;
+import com.jxzj.external.data.designmode.filterchain.Filter;
+import com.jxzj.external.data.designmode.filterchain.FilterChain;
 
 @EnableFilter
 public class Rule1 implements Filter {
