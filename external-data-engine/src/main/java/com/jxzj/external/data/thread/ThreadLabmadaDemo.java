@@ -1,5 +1,7 @@
 package com.jxzj.external.data.thread;
 
+import java.util.concurrent.TimeUnit;
+
 /**
  * 匿名表达式
  * 
@@ -8,11 +10,41 @@ package com.jxzj.external.data.thread;
  */
 public class ThreadLabmadaDemo {
 
+    int count = 0;
+
+    synchronized void m() {
+        while (true) {
+            count++;
+            if (count == 5) {
+                try {
+                    TimeUnit.MINUTES.sleep(1);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                int i = 1 / 0;
+                System.out.println(i);
+            }
+            System.out.println(Thread.currentThread().getName() + count);
+        }
+    }
+
     public static void main(String[] args) {
-        System.out.println(Thread.currentThread().getName());
+        ThreadLabmadaDemo t = new ThreadLabmadaDemo();
+        Runnable r1 = new Runnable() {
+            @Override
+            public void run() {
+                t.m();
+            }
+        };
         new Thread(() -> {
-            System.out.println("hhh");
-            System.out.println(Thread.currentThread().getName());
+            t.m();
         }).start();
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        new Thread(r1, "t2").start();
     }
 }

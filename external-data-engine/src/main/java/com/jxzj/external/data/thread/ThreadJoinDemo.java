@@ -5,6 +5,7 @@ public class ThreadJoinDemo {
 
         MyThread3 my3 = new MyThread3();
         Thread t1 = new Thread(my3, "线程A");
+        System.out.println(t1.getState());
         t1.start();
         for (int i = 0; i < 50; i++) {
             if (i > 10) {
@@ -16,6 +17,8 @@ public class ThreadJoinDemo {
             }
             System.out.println(Thread.currentThread().getName() + "Main线程运行 ———>" + i);
         }
+        System.out.println(t1.getState());
+
     }
 }
 
