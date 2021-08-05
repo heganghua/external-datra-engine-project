@@ -1,7 +1,7 @@
 spring:
   profiles: 
     # dev | product | test   
-    active: dev
+    active: local
   datasource:
     name: spider-engine
     username: ${database.username}

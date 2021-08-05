@@ -6,19 +6,24 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import com.jxzj.external.data.ExternalDataApplicationTest;
-import com.jxzj.external.data.job.GetPingAnInsurePdfJob;
+import com.jxzj.external.data.aspacetdemo.Say;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = ExternalDataApplicationTest.class)
+@SpringBootTest
 public class InsureQuotationTaskServiceText {
 
     @Autowired
-    private GetPingAnInsurePdfJob getPingAnInsurePdfJob;
+    private Say say;
 
     @Test
     public void text1() {
-        getPingAnInsurePdfJob.insureQuotationTaskRemake();
+        say.sayHello("changsha");
+    }
+
+    @Test
+    public void test3() throws Exception {
+
+        say.getStr("abcdefg");
     }
 
 }
