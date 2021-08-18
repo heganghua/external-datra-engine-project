@@ -2,12 +2,13 @@ package com.jxzj.external.data.aspacetdemo;
 
 import java.util.Arrays;
 
+import org.apache.curator.shaded.com.google.common.base.Stopwatch;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.JoinPoint.StaticPart;
+import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.Signature;
 import org.aspectj.lang.annotation.After;
-import org.aspectj.lang.annotation.AfterReturning;
-import org.aspectj.lang.annotation.AfterThrowing;
+import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
@@ -89,7 +90,7 @@ public class AspectBase {
      * @param joinPoint ： 提供对连接点处可用状态和有关它的静态信息的反射访问。<br>
      * @param result ：目标方法返回的值，参数名与returning属性一致。无返回值时，这里result为null.<br>
      */
-    @AfterReturning(pointcut = "aspectPointcut2()", returning = "result")
+    // @AfterReturning(pointcut = "aspectPointcut2()", returning = "result")
     public void aspectAfterReturning(JoinPoint joinPoint, Object result) {
         LOG.info("【返回通知】,shortString={},result={}", joinPoint.toShortString(), result);
     }
@@ -103,7 +104,7 @@ public class AspectBase {
      * @param joinPoint
      * @param ex 捕获的异常对象，名称与throwing属性值一致
      */
-    @AfterThrowing(pointcut = "aspectPointcut2()", throwing = "ex")
+    // @AfterThrowing(pointcut = "aspectPointcut2()", throwing = "ex")
     public void aspectAfterThrowing(JoinPoint joinPoint, Exception ex) {
         LOG.info("【异常通知开始】 ====================================");
         String methodName = joinPoint.getSignature().getName();
@@ -111,6 +112,43 @@ public class AspectBase {
             LOG.error("【异常通知】\" + methodName + \"方法算术异常（ArithmeticException）：\" + ex.getMessage()");
         } else {
             LOG.error("【异常通知】" + methodName + "方法异常：" + ex.getMessage());
+        }
+    }
+
+    @Around(value = "aspectPointcut2()")
+    public Object handleControllMethod(ProceedingJoinPoint joinPoint) throws Throwable {
+        this.checkRequestParam(joinPoint);
+
+        Stopwatch stopWatch = Stopwatch.createStarted();
+        LOG.info("【环绕通知】执行接口开始，方法={}，参数={} ", joinPoint.getSignature(), Arrays.asList(joinPoint.getArgs()).toString());
+        // 继续下一通知活目标方法调用，返回处理结果，如果目标方法发生异常，则proceed会抛出异常。
+        // 如果在调用目标方法或者下一个切面通知前抛出异常，则不会在继续往后走。
+        Object proceed = joinPoint.proceed(joinPoint.getArgs());
+
+        stopWatch.stop();
+        LOG.info("【环绕通知】执行接口结束，方法={}, 返回值={},耗时={} (毫秒)", joinPoint.getSignature(), proceed);
+
+        return null;
+    }
+
+    /**
+     * -参数校验，防止sql注入
+     * 
+     * @param joinPoint
+     */
+    private void checkRequestParam(ProceedingJoinPoint joinPoint) {
+        Object[] args = joinPoint.getArgs();
+        if (args == null || args.length <= 0) {
+            return;
+        }
+        String params = Arrays.toString(joinPoint.getArgs()).toUpperCase();
+        String[] keywords = {"DELETE ", "UPDATE ", "SELECT ", "INSERT ", "SET ", "SUBSTR(", "COUNT(", "DROP ",
+            "TRUNCATE ", "INTO ", "DECLARE ", "EXEC ", "EXECUTE ", " AND ", " OR ", "--"};
+        for (String keyword : keywords) {
+            if (params.contains(keyword)) {
+                LOG.warn("参数存在SQL注入风险，其中包含非法字符 {}.", keyword);
+                throw new RuntimeException("参数存在SQL注入风险：params=" + params);
+            }
         }
     }
 

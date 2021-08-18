@@ -18,7 +18,8 @@ public class Say implements ISay {
 
     @Override
     public String getStr(String str) {
-        int i = 5 / 0;
+        // int i = 5 / 0;
+        System.out.println("【哦豁， 异常了】");
         return str.toUpperCase();
     }
 
