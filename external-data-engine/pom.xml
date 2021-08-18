@@ -31,11 +31,11 @@
             <artifactId>external-data-engine-api</artifactId>
             <version>${jxzj.version}</version>
         </dependency>
-        <dependency>
+       <!--  <dependency>
             <groupId>com.jxzj</groupId>
             <artifactId>jxzj-utils-common</artifactId>
             <version>${jxzj.version}</version>
-        </dependency>
+        </dependency> -->
         
                     
         <!-- 日志框架改为使用log4j2 -->
