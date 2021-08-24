@@ -21,7 +21,7 @@ public class InsureQuotationTaskServiceText {
     }
 
     @Test
-    public void test3() throws Exception {
+    public void test2() throws Exception {
 
         say.getStr("abcdefg");
     }
