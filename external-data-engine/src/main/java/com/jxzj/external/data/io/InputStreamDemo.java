@@ -19,7 +19,7 @@ public class InputStreamDemo {
     public static void test2ByReader() {
         try {
             BufferedReader br = new BufferedReader(new FileReader(new File("./img/pingan.cookies.txt")));
-            String str = new String();
+            String str = null;
             while ((str = br.readLine()) != null) {
                 System.out.println(str);
             }
@@ -33,9 +33,11 @@ public class InputStreamDemo {
             BufferedInputStream bi = new BufferedInputStream(new FileInputStream(new File("./img/pingan.cookies.txt")));
             byte[] b = new byte[1024];
             int end = 0;
+            String st = new String();
             while ((end = bi.read(b)) != -1) {
-                System.out.println(new String(b));
+                st += new String(b);
             }
+            System.out.println(st);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {
