@@ -25,7 +25,7 @@ public class DadaCompany implements Serializable {
     /**
      * 公司ID
      */
-    private String conpanyId;
+    private String companyId;
 
     public Integer getId() {
         return id;
@@ -43,12 +43,17 @@ public class DadaCompany implements Serializable {
         this.companyName = companyName;
     }
 
-    public String getConpanyId() {
-        return conpanyId;
+    public String getCompanyId() {
+        return companyId;
     }
 
-    public void setConpanyId(String conpanyId) {
-        this.conpanyId = conpanyId;
+    public void setCompanyId(String companyId) {
+        this.companyId = companyId;
+    }
+
+    @Override
+    public String toString() {
+        return "DadaCompany [id=" + id + ", companyName=" + companyName + ", companyId=" + companyId + "]";
     }
 
 }

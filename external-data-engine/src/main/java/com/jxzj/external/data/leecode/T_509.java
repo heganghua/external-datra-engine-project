@@ -1,12 +1,39 @@
 package com.jxzj.external.data.leecode;
 
+import com.alibaba.dubbo.common.io.Bytes;
+
 public class T_509 {
 
     public static void main(String[] args) {
-        System.out.println(fib(5));
-        System.out.println(fib2(5));
-        System.out.println(fib3(5));
-        System.out.println(tib(0));
+        // System.out.println(fib(5));
+        // System.out.println(fib2(5));
+        // System.out.println(fib3(5));
+        // System.out.println(tib(0));
+
+        // 字节码测试
+        String a = "abc";
+        int v = 123456;
+
+        byte[] int2bytes = Bytes.int2bytes(v);
+
+        int byteArrayToInt = byteArrayToInt(int2bytes);
+        // System.out.println(byteArrayToInt);
+    }
+
+    public final static int byteArrayToInt(byte[] b) {
+        int value = 0;
+        if (b == null) {
+            return value;
+        }
+        for (int i = 0; i < b.length; i++) {
+            int temp = b[i] & 0xFF;
+            // System.out.println(temp);
+            value = value * 256;
+            // System.out.println(value);
+            value = value + temp;
+            System.out.println(value);
+        }
+        return value;
     }
 
     /**
