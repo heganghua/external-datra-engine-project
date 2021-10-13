@@ -12,7 +12,7 @@ public class T_509 {
 
         // 字节码测试
         String a = "abc";
-        int v = 123456;
+        int v = 1024;
 
         byte[] int2bytes = Bytes.int2bytes(v);
 
