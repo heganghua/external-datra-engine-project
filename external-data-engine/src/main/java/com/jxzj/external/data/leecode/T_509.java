@@ -10,13 +10,24 @@ public class T_509 {
         // System.out.println(fib3(5));
         // System.out.println(tib(0));
 
+        int b = 456;
+
+        byte c = (byte)b;
+        System.out.println(c);
+
         // 字节码测试
-        String a = "abc";
-        int v = 1024;
-
-        byte[] int2bytes = Bytes.int2bytes(v);
-
-        int byteArrayToInt = byteArrayToInt(int2bytes);
+        // String a = "abcd123";
+        int v = 123456789;
+        Long str = 123456L;
+        byte byteValue = str.byteValue();
+        byte[] long2bytes = Bytes.long2bytes(str);
+        System.out.println(byteValue);
+        // byte[] bytes = a.getBytes();
+        // for (int i = 0; i < bytes.length; i++) {
+        // System.out.println(bytes[i]);
+        // }
+        // byte[] int2bytes = Bytes.int2bytes(v);
+        int byteArrayToInt = byteArrayToInt(long2bytes);
         // System.out.println(byteArrayToInt);
     }
 
@@ -27,11 +38,8 @@ public class T_509 {
         }
         for (int i = 0; i < b.length; i++) {
             int temp = b[i] & 0xFF;
-            // System.out.println(temp);
             value = value * 256;
-            // System.out.println(value);
             value = value + temp;
-            System.out.println(value);
         }
         return value;
     }
