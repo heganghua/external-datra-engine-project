@@ -7,6 +7,7 @@ import java.nio.channels.FileChannel;
 import java.nio.channels.FileChannel.MapMode;
 
 /**
+ * MappedByteBuffer 实现堆外内存的拷贝
  * 
  * @author heganghua
  * @date 2021/10/13
