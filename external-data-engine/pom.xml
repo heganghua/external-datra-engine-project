@@ -131,6 +131,12 @@
             <!-- <version>1.8.13</version> -->
         </dependency>
         
+        <dependency>
+            <groupId>io.netty</groupId>
+            <artifactId>netty-all</artifactId>
+        </dependency>
+        
+        
     </dependencies>
 
     <build>
