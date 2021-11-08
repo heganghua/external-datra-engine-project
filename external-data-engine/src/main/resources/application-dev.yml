@@ -2,9 +2,11 @@ spring:
   datasource:
     hikari:
       maximum-pool-size: 100
-database:
-  username: 
-  password: 
-  host: 
-  port: 
+database: 
+  username: root
+  password: root@12306
+  host: localhost
+  port: 3306
+  dbname: datacenter
+
 

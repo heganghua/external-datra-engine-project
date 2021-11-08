@@ -27,10 +27,15 @@ public class MapperTest {
     private DataSource dataSource;
 
     @Test
+    public void dataSourceTest() throws Exception {
+        System.out.println(dataSource.getConnection());
+    }
+
+    @Test
     public void testMybatis() {
 
         List<DadaCompany> selectList =
-            dadaCompanyMapper.selectList(new LambdaQueryWrapper<DadaCompany>().eq(DadaCompany::getCompanyName, "铁甲"));
+            dadaCompanyMapper.selectList(new LambdaQueryWrapper<DadaCompany>().like(DadaCompany::getCompanyName, "阿坝"));
         for (DadaCompany dadaCompany : selectList) {
             System.out.println(dadaCompany);
         }
