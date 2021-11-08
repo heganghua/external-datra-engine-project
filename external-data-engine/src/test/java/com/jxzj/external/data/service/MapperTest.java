@@ -13,7 +13,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.toolkit.CollectionUtils;
-import com.jxzj.external.data.dao.DadaCompanyMapper;
+import com.jxzj.external.data.dao.dada.DadaCompanyMapper;
 import com.jxzj.external.data.entity.datacenter.DadaCompany;
 
 @RunWith(SpringRunner.class)
