@@ -1,4 +1,4 @@
-package com.jxzj.external.data.dao;
+package com.jxzj.external.data.dao.dada;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.jxzj.external.data.entity.datacenter.DadaCompany;
