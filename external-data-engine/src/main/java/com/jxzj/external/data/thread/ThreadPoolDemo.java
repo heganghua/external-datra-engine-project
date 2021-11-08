@@ -57,6 +57,11 @@ public class ThreadPoolDemo {
 
     public static void main(String[] args) {
         // ThreadPoolDemo.testArrayBlockingQueue();
-        System.out.println(Runtime.getRuntime().availableProcessors());
+        // System.out.println(Runtime.getRuntime().availableProcessors());
+
+        Executors.newCachedThreadPool();
+
+        // new ThreadPoolExecutor(corePoolSize, maximumPoolSize, keepAliveTime, unit, workQueue)
+
     }
 }
