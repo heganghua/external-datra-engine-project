@@ -1,6 +1,7 @@
 package com.jxzj.external.data.service;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -14,8 +15,10 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.toolkit.CollectionUtils;
+import com.jxzj.external.data.dao.aptitudes.AptitudesMapper;
 import com.jxzj.external.data.dao.dada.DadaCompanyMapper;
 import com.jxzj.external.data.dao.users.UsersMapper;
+import com.jxzj.external.data.entity.aptitudes.Aptitudes;
 import com.jxzj.external.data.entity.datacenter.DadaCompany;
 import com.jxzj.external.data.entity.users.Users;
 
@@ -31,6 +34,33 @@ public class MapperTest {
 
     @Autowired
     private UsersMapper usersMapper;
+
+    @Autowired
+    private AptitudesMapper aptitudesMapper;
+
+    @Test
+    public void insertTest() throws Exception {
+
+        List<Aptitudes> arrayList = new ArrayList<Aptitudes>();
+
+        for (int i = 0; i < 4; i++) {
+            Aptitudes aptitudes = new Aptitudes();
+            aptitudes.setId(String.valueOf(i));
+            aptitudes.setCorpName("haha + " + String.valueOf(i));
+            arrayList.add(aptitudes);
+        }
+
+        int insert = aptitudesMapper.insert(arrayList);
+        System.out.println(insert);
+    }
+
+    @Test
+    public void aptitudesTest() throws Exception {
+
+        List<Aptitudes> selectList = aptitudesMapper
+            .selectList(Arrays.asList("5dadcd6f90d5461fa2d2c37dcefe6426", "5dadcd6f90d5461fa2d2c37dcefe6426"));
+        selectList.stream().forEach(a -> System.out.println(a.toString()));
+    }
 
     @Test
     public void usersText() throws Exception {

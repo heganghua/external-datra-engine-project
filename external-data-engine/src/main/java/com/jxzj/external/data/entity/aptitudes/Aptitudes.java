@@ -179,4 +179,14 @@ public class Aptitudes implements Serializable {
         this.companyAptitudeList = companyAptitudeList;
     }
 
+    @Override
+    public String toString() {
+        return "Aptitudes [id=" + id + ", corpName=" + corpName + ", projectName=" + projectName + ", projectType="
+            + projectType + ", contractPrice=" + contractPrice + ", settlementPrice=" + settlementPrice
+            + ", technologyGrade=" + technologyGrade + ", segmentName=" + segmentName + ", beginData=" + beginData
+            + ", handData=" + handData + ", endData=" + endData + ", projectStatus=" + projectStatus + ", quality="
+            + quality + ", province=" + province + ", projectCode=" + projectCode + ", remak=" + remak
+            + ", companyAptitudeList=" + companyAptitudeList + "]";
+    }
+
 }

@@ -2,14 +2,17 @@ package com.jxzj.external.data.dao.aptitudes;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
+
 import com.jxzj.external.data.entity.aptitudes.Aptitudes;
 
 public interface AptitudesMapper {
-    List<Aptitudes> selectList(List<Long> ids);
 
-    Aptitudes selectOneById(Long id);
+    List<Aptitudes> selectList(@Param("ids") List<String> ids);
 
-    int insert(List<Aptitudes> AptitudesList);
+    Aptitudes selectOneById(String id);
 
-    int updateById(Long id);
+    int insert(@Param("aptitudesList") List<Aptitudes> aptitudesList);
+
+    int updateById(String id);
 }
