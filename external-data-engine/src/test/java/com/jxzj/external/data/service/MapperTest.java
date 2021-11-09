@@ -41,6 +41,7 @@ public class MapperTest {
         // }
         List<Users> selectList = usersMapper.selectList(Arrays.asList(1L, 2L, 3L, 4L, 5L, 6L));
         selectList.stream().forEach(e -> System.out.println(e.toString()));
+
     }
 
     @Test
