@@ -57,4 +57,10 @@ public class Users implements Serializable {
         this.updateTime = updateTime;
     }
 
+    @Override
+    public String toString() {
+        return "Users [id=" + id + ", name=" + name + ", addr=" + addr + ", sex=" + sex + ", updateTime=" + updateTime
+            + "]";
+    }
+
 }

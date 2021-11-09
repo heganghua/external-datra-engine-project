@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.jxzj.external.data.dao.aptitudes.AptitudesMapper">
-    <resultMap type="com.jxzj.external.data.entity.aptitudes.Aptitudes" id="BaseReaultMap">
+    <resultMap type="com.jxzj.external.data.entity.aptitudes.Aptitudes" id="BaseResultMap">
         <result property="id" column="id"/>
         <result property="corpName" column="corpName"/>
         <result property="projectName" column="projectName"/>

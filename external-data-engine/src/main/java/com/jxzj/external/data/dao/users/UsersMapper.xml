@@ -11,9 +11,15 @@
     </resultMap>
     
     <select id="selectList" resultMap="BaseResultMap">
-        
-        
-        
+        <if test="ids != null and ids.size() > 0">
+            select * from users
+            <where>
+                id in 
+                <foreach collection="ids" item="item" separator="," open="(" close=")">
+                    #{item, jdbcType=BIGINT}
+                </foreach>
+            </where>
+        </if>
     </select>
 
     <select id="selectOneById">
