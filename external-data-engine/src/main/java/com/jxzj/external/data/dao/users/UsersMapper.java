@@ -4,9 +4,10 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
 
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.jxzj.external.data.entity.users.Users;
 
-public interface UsersMapper {
+public interface UsersMapper extends BaseMapper<Users> {
 
     List<Users> selectList(@Param("ids") List<Long> ids);
 

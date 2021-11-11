@@ -14,7 +14,9 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.core.toolkit.CollectionUtils;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.jxzj.external.data.dao.aptitudes.AptitudesMapper;
 import com.jxzj.external.data.dao.dada.DadaCompanyMapper;
 import com.jxzj.external.data.dao.users.UsersMapper;
@@ -37,6 +39,21 @@ public class MapperTest {
 
     @Autowired
     private AptitudesMapper aptitudesMapper;
+
+    @Test
+    public void pageTest() throws Exception {
+
+        for (int i = 1; i < 4; i++) {
+            Page<Users> page = new Page<>(i, 10);
+            IPage<Users> selectPage = usersMapper.selectPage(page, null);
+            // selectPage.getRecords().forEach(u -> System.out.println(u.toString()));
+            selectPage.getRecords().forEach(System.out::println);
+            System.out.println(selectPage.getPages());
+            System.out.println(selectPage.getTotal());
+            System.out.println("==========================");
+        }
+
+    }
 
     @Test
     public void insertTest() throws Exception {
