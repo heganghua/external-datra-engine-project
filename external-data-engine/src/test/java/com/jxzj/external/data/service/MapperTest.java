@@ -20,6 +20,7 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.jxzj.external.data.dao.aptitudes.AptitudesMapper;
 import com.jxzj.external.data.dao.dada.DadaCompanyMapper;
 import com.jxzj.external.data.dao.users.UsersMapper;
+import com.jxzj.external.data.dto.StudentCourse;
 import com.jxzj.external.data.entity.aptitudes.Aptitudes;
 import com.jxzj.external.data.entity.datacenter.DadaCompany;
 import com.jxzj.external.data.entity.users.Users;
@@ -39,6 +40,14 @@ public class MapperTest {
 
     @Autowired
     private AptitudesMapper aptitudesMapper;
+
+    @Test
+    public void jointest() throws Exception {
+        List<StudentCourse> selectListStudentCourse = usersMapper.selectListStudentCourse(2L);
+
+        selectListStudentCourse.stream().forEach(System.out::println);
+
+    }
 
     @Test
     public void pageTest() throws Exception {

@@ -16,6 +16,15 @@ mybatis:
   mapper-locations:
   - classpath:com/jxzj/external/data/dao/*.xml
   type-aliases-package: com.jxzj.external.data.entity
+ 
+logging: 
+  config: classpath:log4j2.xml
+  
+  
+
+
+
+  
 #dubbo:
 #  application:
 #    id: external-data-provider
