@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.jxzj.external.data.dto.StudentCourse;
 import com.jxzj.external.data.entity.users.Users;
 
 public interface UsersMapper extends BaseMapper<Users> {
@@ -16,5 +17,7 @@ public interface UsersMapper extends BaseMapper<Users> {
     int insert(List<Users> usersList);
 
     int updateById(Long id);
+
+    List<StudentCourse> selectListStudentCourse(@Param("userId") Long userId);
 
 }

@@ -21,7 +21,23 @@
             </where>
         </if>
     </select>
-
+    
+    <select id="selectListStudentCourse" resultMap="StudentCourseResultMap">
+        select * from users where id = #{userId, jdbcType=BIGINT};
+    </select>
+    
+    <resultMap type="com.jxzj.external.data.dto.StudentCourse" id="StudentCourseResultMap" extends="BaseResultMap">
+        <collection property="courseList" ofType="com.jxzj.external.data.entity.users.Course" select="selectCourse" column="id"></collection>
+    </resultMap>
+    
+    <select id="selectCourse" resultType="com.jxzj.external.data.entity.users.Course">
+        select * from course where user_id = #{id, jdbcType=BIGINT};
+    
+    </select>
+    
+    
+    
+    
     <select id="selectOneById">
     </select>
     
