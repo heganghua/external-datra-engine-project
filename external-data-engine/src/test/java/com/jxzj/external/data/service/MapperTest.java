@@ -44,9 +44,7 @@ public class MapperTest {
     @Test
     public void jointest() throws Exception {
         List<StudentCourse> selectListStudentCourse = usersMapper.selectListStudentCourse(2L);
-
         selectListStudentCourse.stream().forEach(System.out::println);
-
     }
 
     @Test
