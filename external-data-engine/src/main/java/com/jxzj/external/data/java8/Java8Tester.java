@@ -1,9 +1,13 @@
 package com.jxzj.external.data.java8;
 
+import java.time.LocalDateTime;
+import java.time.ZonedDateTime;
+import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.IntSummaryStatistics;
 import java.util.List;
-import java.util.stream.Collectors;
+import java.util.Optional;
+
+import com.jxzj.external.data.entity.users.Users;
 
 /**
  * java8新特性
@@ -16,9 +20,8 @@ public class Java8Tester {
     final static String says = "Hello World!";
 
     public static void main(String[] args) {
-        // methodReferenceTester();
-
-        List<Integer> numbers = Arrays.asList(-1, -2, 0, 4, 5);
+        DateTimeTest();
+ List<Integer> numbers = Arrays.asList(-1, -2, 0, 4, 5);
 
         IntSummaryStatistics stats = numbers.stream().mapToInt((x) -> x * x).summaryStatistics();
 
@@ -38,7 +41,45 @@ public class Java8Tester {
         // String s1 = "jAva233666";
         // String s2 = "JaVa";
         // int compareToIgnoreCase = s1.compareToIgnoreCase(s2);
-        // System.out.println(compareToIgnoreCase);
+        // System.out.println(compareToIgnoreCase);    }
+
+    /**
+     * 3时间日期设置
+     */
+    static void DateTimeTest() {
+
+        LocalDateTime now = LocalDateTime.now();
+        System.out.println("当前时间： " + now);
+        System.out.println(now.toLocalDate());
+        System.out.println(now.toLocalTime());
+
+        // 考虑时区
+        ZonedDateTime now2 = ZonedDateTime.now();
+        System.out.println(now2);
+
+    }
+
+    /**
+     * Optional对象
+     */
+    static void OptionalTest() {
+
+        List<Users> list = new ArrayList<Users>();
+        Users user2 = new Users("anna@gmail.com", "1234");
+
+        Users users = null;
+
+        String orElse = Optional.ofNullable(user2).map(e -> e.getName()).orElse(null);
+
+        Optional.ofNullable(user2).ifPresent(e -> System.out.println("21123  " + e.getAddr()));
+        System.out.println("Optional: " + orElse);
+
+        Optional.ofNullable(user2).filter(u -> u.getName().equals("annda@gmail.com"))
+            .ifPresent(u -> System.out.println("this is my Email : " + u.getName()));
+
+        Optional<String> map = Optional.ofNullable(user2).map(u -> u.getName());
+        String orElse2 = map.orElse(null);
+        System.out.println("orElse2: " + orElse2);
 
     }
 

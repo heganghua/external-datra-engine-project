@@ -17,6 +17,11 @@ public class Users implements Serializable {
 
     private Date updateTime;
 
+    public Users(String name, String addr) {
+        this.name = name;
+        this.addr = addr;
+    }
+
     public Long getId() {
         return id;
     }
