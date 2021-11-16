@@ -1,7 +1,9 @@
 package com.jxzj.external.data.java8;
 
 import java.util.Arrays;
+import java.util.IntSummaryStatistics;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * java8新特性
@@ -14,7 +16,30 @@ public class Java8Tester {
     final static String says = "Hello World!";
 
     public static void main(String[] args) {
-        methodReferenceTester();
+        // methodReferenceTester();
+
+        List<Integer> numbers = Arrays.asList(-1, -2, 0, 4, 5);
+
+        IntSummaryStatistics stats = numbers.stream().mapToInt((x) -> x * x).summaryStatistics();
+
+        List<Integer> collect = numbers.stream().sorted().collect(Collectors.toList());
+
+        collect.forEach(System.out::println);
+
+        System.out.println("Max : " + stats.getMax());
+        System.out.println("Min : " + stats.getMin());
+        System.out.println("Sum : " + stats.getSum());
+        System.out.println("Average : " + stats.getAverage());
+        System.out.println("Count : " + stats.getCount());
+
+        // Supplier<List<String>> a = ArrayList<String>::new;
+        // List<String> list = a.get();
+        //
+        // String s1 = "jAva233666";
+        // String s2 = "JaVa";
+        // int compareToIgnoreCase = s1.compareToIgnoreCase(s2);
+        // System.out.println(compareToIgnoreCase);
+
     }
 
     /**
