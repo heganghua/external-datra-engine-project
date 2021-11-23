@@ -7,6 +7,10 @@ import com.jxzj.external.data.entity.users.Users;
 
 public class StudentCourse extends Users {
 
+    public StudentCourse(String name, String addr) {
+        super(name, addr);
+    }
+
     private static final long serialVersionUID = 1L;
 
     private List<Course> courseList;
