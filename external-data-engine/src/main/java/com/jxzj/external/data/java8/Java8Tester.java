@@ -1,11 +1,16 @@
 package com.jxzj.external.data.java8;
 
+import java.io.UnsupportedEncodingException;
 import java.time.LocalDateTime;
 import java.time.ZonedDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Base64;
+import java.util.IntSummaryStatistics;
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
+import java.util.stream.Collectors;
 
 import com.jxzj.external.data.entity.users.Users;
 
@@ -20,7 +25,67 @@ public class Java8Tester {
     final static String says = "Hello World!";
 
     public static void main(String[] args) {
-        DateTimeTest();
+        // DateTimeTest();
+        try {
+            base64Test();
+        } catch (UnsupportedEncodingException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+
+    }
+
+    static void base64Test() throws UnsupportedEncodingException {
+
+        String encodeToString = Base64.getEncoder().encodeToString("Hello world!".getBytes("utf-8"));
+        System.out.println(encodeToString);
+
+        byte[] decode = Base64.getDecoder().decode(encodeToString);
+        System.out.println(new String(decode));
+        // url
+        String toString = Base64.getUrlEncoder().encodeToString("www.baidu.com/name?张三".getBytes());
+        System.out.println(toString);
+        byte[] bs = Base64.getUrlDecoder().decode(toString);
+        System.out.println(new String(bs));
+
+        // MIME
+        StringBuilder stringBuilder = new StringBuilder();
+        for (int i = 0; i < 10; i++) {
+            stringBuilder.append(UUID.randomUUID().toString());
+        }
+        byte[] bytes = stringBuilder.toString().getBytes();
+        String encode = Base64.getMimeEncoder().encodeToString(bytes);
+        System.out.println(encode);
+        byte[] decode2 = Base64.getMimeDecoder().decode(encode);
+        System.out.println(new String(decode2));
+
+    }
+
+    /**
+     * 流文件
+     */
+    static void streamTest() {
+        List<Integer> numbers = Arrays.asList(-1, -2, 0, 4, 5);
+
+        IntSummaryStatistics stats = numbers.stream().mapToInt((x) -> x * x).summaryStatistics();
+
+        List<Integer> collect = numbers.stream().sorted().collect(Collectors.toList());
+
+        collect.forEach(System.out::println);
+
+        System.out.println("Max : " + stats.getMax());
+        System.out.println("Min : " + stats.getMin());
+        System.out.println("Sum : " + stats.getSum());
+        System.out.println("Average : " + stats.getAverage());
+        System.out.println("Count : " + stats.getCount());
+
+        // Supplier<List<String>> a = ArrayList<String>::new;
+        // List<String> list = a.get();
+        //
+        // String s1 = "jAva233666";
+        // String s2 = "JaVa";
+        // int compareToIgnoreCase = s1.compareToIgnoreCase(s2);
+        // System.out.println(compareToIgnoreCase);
     }
 
     /**

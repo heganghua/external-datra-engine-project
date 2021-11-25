@@ -59,7 +59,6 @@ public class MapperTest {
             System.out.println(selectPage.getTotal());
             System.out.println("==========================");
         }
-
     }
 
     @Test
