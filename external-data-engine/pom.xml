@@ -37,6 +37,11 @@
             <version>${jxzj.version}</version>
         </dependency> -->
         
+         <!-- web支持 提供http接口 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
                     
         <!-- 日志框架改为使用log4j2 -->
         <dependency>
@@ -85,10 +90,10 @@
             <version>3.4.1</version>
         </dependency>
         
-        <dependency>
-    <groupId>org.freemarker</groupId>
-    <artifactId>freemarker</artifactId>
-</dependency>
+                    <dependency>
+                <groupId>org.freemarker</groupId>
+                <artifactId>freemarker</artifactId>
+            </dependency>
          -->
 
         <!-- Spring Boot Dubbo -->
@@ -142,12 +147,17 @@
             <artifactId>aspectjweaver</artifactId>
             <!-- <version>1.8.13</version> -->
         </dependency>
-      <!--   
+        
+        <!-- reids 依赖 -->
         <dependency>
-            <groupId>io.netty</groupId>
-            <artifactId>netty-all</artifactId>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-redis</artifactId>
         </dependency>
-         -->
+
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-pool2</artifactId>
+        </dependency>
         
     </dependencies>
 
