@@ -10,7 +10,7 @@ spring:
     # 数据库编号
     database: 0
     # 超时时间
-    timeout: 1800000
+    timeout: 50000
 database:
   username: root
   password: root@12306

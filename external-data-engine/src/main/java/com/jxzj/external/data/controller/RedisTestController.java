@@ -2,25 +2,30 @@ package com.jxzj.external.data.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.jxzj.external.data.dto.SecKillInfo;
+import com.jxzj.external.data.service.seckill.ISecKillService;
+
 @RestController
-@RequestMapping("/test")
+@RequestMapping("/seckill")
 public class RedisTestController {
 
     @Autowired
     private RedisTemplate<String, Object> redistemplate;
 
-    @GetMapping("/redis/{kind}")
-    public String redisTest(@PathVariable("kind") String kind) {
-        redistemplate.opsForValue().set("name", "lucy");
-        redistemplate.opsForValue().set("sex", "woman");
+    @Autowired
+    private ISecKillService secKillService;
 
-        String object = (String)redistemplate.opsForValue().get(kind);
-        return object;
+    @PostMapping("/doseckill")
+    public Boolean doseckill(@RequestBody SecKillInfo request) {
+
+        Boolean doSecKill = secKillService.doSecKill(request.getProdid());
+
+        return doSecKill;
 
     }
 
