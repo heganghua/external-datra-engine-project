@@ -2,11 +2,21 @@ spring:
   datasource:
     hikari:
       maximum-pool-size: 100
+  redis: 
+    # 服务器地址
+    host: 192.168.72.133
+    # 端口号
+    prot: 6379
+    # 数据库编号
+    database: 0
+    # 超时时间
+    timeout: 50000
 database:
   username: root
   password: root@12306
   host: localhost
   port: 3306
   dbname: datacenter
+
 
 
