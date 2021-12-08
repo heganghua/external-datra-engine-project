@@ -53,28 +53,6 @@ public class SecKillService implements ISecKillService {
             return false;
         }
 
-        // 7、秒杀过程
-
-        // List<Object> execute = redisTemplate.execute(new SessionCallback<List<Object>>() {
-        // @Override
-        // public List<Object> execute(RedisOperations operations) throws DataAccessException {
-        // operations.watch(kcKey);
-        // operations.multi();
-        // RedisAtomicInteger redisAtomicInteger =
-        // new RedisAtomicInteger(kcKey, ((RedisAccessor)operations).getConnectionFactory());
-        // int decrementAndGet = redisAtomicInteger.decrementAndGet();
-        // operations.ops
-        //
-        // // 7.2添加用户进redis
-        // operations.opsForSet().add(userKey, uId);
-        // System.out.println("恭喜你，秒杀成功！！！！！");
-        // return operations.exec();
-        // }
-        // });
-        // 7.1商品数加1
-        // RedisAtomicInteger redisAtomicInteger = new RedisAtomicInteger(kcKey, redisTemplate.getConnectionFactory());
-        // int decrementAndGet = redisAtomicInteger.decrementAndGet();
-
         // 开始事务队列
         redisTemplate.multi();
         redisTemplate.opsForValue().increment(kcKey, -1);

@@ -25,13 +25,20 @@ public class Java8Tester {
     final static String says = "Hello World!";
 
     public static void main(String[] args) {
+
+        System.out.println(2 << 24);
+
+        // for (int i = 0; i < 1000; i++) {
+        // System.out.println("i = " + i + " i % 15 = " + i % 15);
+        // }
+
         // DateTimeTest();
-        try {
-            base64Test();
-        } catch (UnsupportedEncodingException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
+        // try {
+        // base64Test();
+        // } catch (UnsupportedEncodingException e) {
+        // // TODO Auto-generated catch block
+        // e.printStackTrace();
+        // }
 
     }
 
