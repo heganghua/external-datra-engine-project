@@ -24,7 +24,7 @@ public class RedisTestController {
     private RedisTemplate<String, Object> redistemplate;
 
     @Resource
-    private DefaultRedisScript<Integer> redisScript;
+    private DefaultRedisScript<Long> redisScript;
 
     @Autowired
     private ISecKillService secKillService;
@@ -39,8 +39,8 @@ public class RedisTestController {
 
     @PostMapping("/lua")
     public Boolean testLua() {
-        List<String> keys = Arrays.asList("12306", "sku123");
-        Integer execute = redistemplate.execute(redisScript, keys, "100");
+        List<String> keys = Arrays.asList("sku1236", "12306");
+        Long execute = redistemplate.execute(redisScript, keys, "100");
         assert execute != null;
         return true;
     }

@@ -10,11 +10,11 @@ import org.springframework.scripting.support.ResourceScriptSource;
 public class LuaConfig {
 
     @Bean
-    public DefaultRedisScript<Integer> redisScript() {
+    public DefaultRedisScript<Long> redisScript() {
 
-        DefaultRedisScript<Integer> defaultRedisScript = new DefaultRedisScript<>();
+        DefaultRedisScript<Long> defaultRedisScript = new DefaultRedisScript<>();
         defaultRedisScript.setScriptSource(new ResourceScriptSource(new ClassPathResource("seckill_redis_script.lua")));
-        defaultRedisScript.setResultType(Integer.class);
+        defaultRedisScript.setResultType(Long.class);
         return defaultRedisScript;
     }
 
