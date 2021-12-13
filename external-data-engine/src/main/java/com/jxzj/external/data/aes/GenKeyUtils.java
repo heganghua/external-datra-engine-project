@@ -36,12 +36,11 @@ public class GenKeyUtils {
 
     public static void main(String[] args) {
         SecretKey generateKey = generateKey();
-        
+
         byte[] decode = Base64.decode(generateKey.toString());
         String string = decode.toString();
         System.out.println(string);
-        
-        
+
         System.out.println(generateKey);
         System.out.println(generateKey.toString());;
     }
