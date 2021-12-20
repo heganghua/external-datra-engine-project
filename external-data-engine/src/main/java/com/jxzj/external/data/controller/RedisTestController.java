@@ -1,7 +1,13 @@
 package com.jxzj.external.data.controller;
 
+import java.util.Arrays;
+import java.util.List;
+
+import javax.annotation.Resource;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.core.script.DefaultRedisScript;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,6 +23,9 @@ public class RedisTestController {
     @Autowired
     private RedisTemplate<String, Object> redistemplate;
 
+    @Resource
+    private DefaultRedisScript<Long> redisScript;
+
     @Autowired
     private ISecKillService secKillService;
 
@@ -26,7 +35,14 @@ public class RedisTestController {
         Boolean doSecKill = secKillService.doSecKill(request.getProdid());
 
         return doSecKill;
+    }
 
+    @PostMapping("/lua")
+    public Boolean testLua() {
+        List<String> keys = Arrays.asList("sku1236", "12306");
+        Long execute = redistemplate.execute(redisScript, keys, "100");
+        assert execute != null;
+        return true;
     }
 
 }
