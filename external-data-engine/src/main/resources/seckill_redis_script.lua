@@ -3,7 +3,7 @@ local prodid = KEYS[2];
 
 local qtkey = "sk:"..prodid..":qt";
 local userskey = "sk:"..prodid..":user";
-
+--- 由于lua脚本接收到参数都会转为String，所以要转成数字类型才能比较
 local userExists = redis.call("sismember", userskey, userid);
 if userExists == true then
 	if tonumber(userExists) == 1 then
