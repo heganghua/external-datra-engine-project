@@ -9,9 +9,12 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import com.alibaba.dubbo.config.spring.context.annotation.DubboComponentScan;
 
+import springfox.documentation.swagger2.annotations.EnableSwagger2;
+
 @SpringBootApplication
 @DubboComponentScan("com.jxzj.external.data.service")
 @MapperScan("com.jxzj.external.data.dao")
+@EnableSwagger2
 @EnableTransactionManagement
 @EnableAsync
 @EnableScheduling
