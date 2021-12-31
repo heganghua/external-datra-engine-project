@@ -75,7 +75,24 @@ public class IDCardVerify {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return "";
+        return idStr;
+    }
+
+    public static String simpleIdentityCardVerification(String idStr) {
+        String iDCardNo = "";
+        // 判断号码的长度 15位或18位
+        if (idStr.length() != 15 && idStr.length() != 18) {
+            return "身份证号码长度应该为15位或18位";
+        }
+        if (idStr.length() == 18) {
+            iDCardNo = idStr.substring(0, 17);
+        } else if (idStr.length() == 15) {
+            iDCardNo = idStr.substring(0, 6) + "19" + idStr.substring(6, 15);
+        }
+        if (isStrNum(iDCardNo) == false) {
+            return "身份证15位号码都应为数字;18位号码除最后一位外,都应为数字";
+        }
+        return idStr;
     }
 
     /**
