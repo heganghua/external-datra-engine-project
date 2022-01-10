@@ -24,7 +24,6 @@ public class GenKeyUtils {
         try {
             KeyGenerator keyGenerator = KeyGenerator.getInstance(ALGORITHM);
             SecureRandom secureRandom = new SecureRandom();
-            System.out.println(secureRandom);
             keyGenerator.init(secureRandom);
             generateKey = keyGenerator.generateKey();
         } catch (NoSuchAlgorithmException e) {
@@ -38,11 +37,10 @@ public class GenKeyUtils {
         SecretKey generateKey = generateKey();
 
         byte[] decode = Base64.decode(generateKey.toString());
-        String string = decode.toString();
-        System.out.println(string);
+        System.out.println(new String(decode));
 
-        System.out.println(generateKey);
-        System.out.println(generateKey.toString());;
+        // System.out.println(generateKey);
+        // System.out.println(generateKey.toString());;
     }
 
 }
