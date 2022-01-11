@@ -12,7 +12,7 @@ public class SwaggerConfig {
     @Bean
     public Docket createRestApi() {
         return new Docket(DocumentationType.SWAGGER_2) // 1.SWAGGER_2
-            .select().apis(RequestHandlerSelectors.basePackage("com.example.swaggerv2.controller")) // 2.设置扫描路径
+            .select().apis(RequestHandlerSelectors.basePackage("com.jxzj.external.data.controller")) // 2.设置扫描路径
             .build();
     }
 }

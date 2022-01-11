@@ -14,17 +14,29 @@ public class JustTest {
 
     public static void main(String[] args) {
 
-        GoodsProducer p = new GoodsProducer();
-        GoodsConsumer c = new GoodsConsumer();
+        Thread thread = new Thread();
+        System.out.println(thread.getState());
 
-        for (int i = 0; i < MAX_PRODUCER; i++) {
-            Thread thread = new Thread(p, "生产着线程" + i);
-            thread.start();
+        thread.start();
+        System.out.println(thread.getState());
+        try {
+            thread.join();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
         }
 
-        for (int j = 0; j < MAX_CONSUMER; j++) {
-            new Thread(c, "消费者线程" + j).start();
-        }
+        System.out.println(thread.getState());
+        // GoodsProducer p = new GoodsProducer();
+        // GoodsConsumer c = new GoodsConsumer();
+        //
+        // for (int i = 0; i < MAX_PRODUCER; i++) {
+        // Thread thread = new Thread(p, "生产着线程" + i);
+        // thread.start();
+        // }
+        //
+        // for (int j = 0; j < MAX_CONSUMER; j++) {
+        // new Thread(c, "消费者线程" + j).start();
+        // }
 
     }
 }

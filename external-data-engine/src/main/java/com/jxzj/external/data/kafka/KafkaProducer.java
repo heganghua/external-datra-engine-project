@@ -19,7 +19,6 @@ public class KafkaProducer {
     private KafkaTemplate<String, Object> kafkaTemplate;
 
     public void send(Object obj) {
-
         LOGGER.info(obj.toString());
     }
 
