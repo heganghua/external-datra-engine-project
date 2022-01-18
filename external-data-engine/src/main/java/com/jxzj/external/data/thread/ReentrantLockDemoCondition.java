@@ -1,52 +1,71 @@
 package com.jxzj.external.data.thread;
 
-import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
 public class ReentrantLockDemoCondition {
 
-    static final Lock lock = new ReentrantLock();
+    static final Lock clock = new ReentrantLock();
+    static final Lock pLock = new ReentrantLock();
+    private static final int CAPACITY = 10;
 
     public static void main(String[] args) {
 
-        Condition pc = lock.newCondition();
-        Condition cc = lock.newCondition();
+        // container[0] = "licy";
+        // Object[] cpoy = container;
+        // cpoy[1] = "wuli";
+        // System.out.println(Arrays.toString(container));
+        // System.out.println(Arrays.toString(cpoy));
 
     }
 
     static class ProducerThread implements Runnable {
 
-        Condition c;
+        Condition cc;
+        Condition pc;
+        Lock pLock;
+        Object[] container;
 
-        public ProducerThread(Condition c) {
+        public ProducerThread(Condition pc, Condition cc, Lock pLock, Object[] container) {
             super();
-            this.c = c;
+            this.pc = pc;
+            this.cc = cc;
+            this.pLock = pLock;
+            this.container = container;
         }
 
         @Override
         public void run() {
-            try {
-                firstLock.lockInterruptibly();
-                System.out.println("firstLock Interruptibly....");
-                TimeUnit.SECONDS.sleep(2);
-                secondLock.lockInterruptibly();
-                System.out.println("secondLock Interruptibly...");
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            } finally {
-                firstLock.unlock();
-                secondLock.unlock();
-                System.out.println(Thread.currentThread().getName() + "获取到了资源，正常结束");
+            for (;;) {
+
             }
+
         }
     }
 
     static class ConsumerThread implements Runnable {
-
         @Override
         public void run() {
+
+        }
+
+    }
+
+    static class Queue {
+
+        Condition pc = pLock.newCondition();
+        Condition cc = clock.newCondition();
+        Object[] container = new Object[CAPACITY];
+        int count = 0;
+        int putIndex = 0;
+        int takeIndex = 0;
+
+        public void putEle(Object ele) {
+
+        }
+
+        public void takeEle() {
 
         }
 
