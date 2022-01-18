@@ -1,34 +1,28 @@
 package com.jxzj.external.data.thread;
 
 import java.util.concurrent.TimeUnit;
+import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
-public class ReentrantLockDemo2 {
+public class ReentrantLockDemoCondition {
 
-    static final Lock lock1 = new ReentrantLock();
-    static Lock lock2 = new ReentrantLock();
+    static final Lock lock = new ReentrantLock();
 
     public static void main(String[] args) {
-        Thread t1 = new Thread(new ThreadDemo(lock1, lock2));
-        Thread t2 = new Thread(new ThreadDemo(lock2, lock1));
 
-        t1.start();
-        t2.start();
-        // t1 线程中断
-        System.out.println("手动中断线程t1");
-        t1.interrupt();
+        Condition pc = lock.newCondition();
+        Condition cc = lock.newCondition();
+
     }
 
-    static class ThreadDemo implements Runnable {
+    static class ProducerThread implements Runnable {
 
-        Lock firstLock;
-        Lock secondLock;
+        Condition c;
 
-        public ThreadDemo(Lock firstLock, Lock secondLock) {
+        public ProducerThread(Condition c) {
             super();
-            this.firstLock = firstLock;
-            this.secondLock = secondLock;
+            this.c = c;
         }
 
         @Override
@@ -47,6 +41,15 @@ public class ReentrantLockDemo2 {
                 System.out.println(Thread.currentThread().getName() + "获取到了资源，正常结束");
             }
         }
+    }
+
+    static class ConsumerThread implements Runnable {
+
+        @Override
+        public void run() {
+
+        }
+
     }
 
 }
