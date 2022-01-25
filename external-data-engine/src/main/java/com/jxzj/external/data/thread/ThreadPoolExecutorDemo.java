@@ -17,7 +17,7 @@ public class ThreadPoolExecutorDemo {
 
         for (int i = 0; i < 10; i++) {
             // 创建一个WorkerThread对象
-            ThreadLocalDemo threadLocalDemo = new ThreadLocalDemo("" + i);
+            ThreadDemo threadLocalDemo = new ThreadDemo("" + i);
             // 执行Runnable
             threadPool.execute(threadLocalDemo);
         }
