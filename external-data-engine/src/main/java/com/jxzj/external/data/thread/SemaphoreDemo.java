@@ -39,8 +39,5 @@ public class SemaphoreDemo implements Runnable {
     }
 
     @Override
-    public void run() {
-        }
-    }
-
+    public void run() {}
 }
