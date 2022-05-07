@@ -6,7 +6,6 @@ public class Bread extends Food {
 
     public Bread(Food basicFood) {
         super();
-        System.out.println("basicFood 有参构造方法");
         this.basicFood = basicFood;
     }
 

@@ -8,7 +8,6 @@ public class Food {
 
     public Food(String foodName) {
         super();
-        System.out.println("Food 有参构造方法");
         this.foodName = foodName;
     }
 

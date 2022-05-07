@@ -1,5 +1,11 @@
 package com.jxzj.external.data.designmode.buildmode;
 
+/**
+ * 构造模式
+ * 
+ * @author hgh
+ * @date 2022/04/11
+ */
 public class Test {
 
     public static void main(String[] args) throws CloneNotSupportedException {
@@ -20,6 +26,7 @@ public class Test {
 
         MilkTea clone = (MilkTea)milkTea.clone();
         System.out.println(clone.toString());
+        System.out.println("===============================================================");
 
         Computer computer =
             new Computer.Builder("英特尔", "三星").setDisplay("三星").setKeyboard("妇科圣手").setUsbCount(3).build();
@@ -38,7 +45,7 @@ public class Test {
         // 1，工厂模式(简单工厂模式、工厂方法模式、抽象工厂模式)
         // 2、单例模式
         // 3、 建造型模式
-        // 4、原先模式
+        // 4、原型模式
 
     }
 

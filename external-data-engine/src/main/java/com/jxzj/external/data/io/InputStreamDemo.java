@@ -13,7 +13,7 @@ import java.util.Scanner;
 
 public class InputStreamDemo {
     public static void main(String[] args) {
-        InputStreamDemo.test3ByByte();
+        InputStreamDemo.test2ByReader();
     }
 
     public static void test2ByReader() {

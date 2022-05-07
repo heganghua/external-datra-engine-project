@@ -17,7 +17,7 @@ public class FilterFactory {
         ArrayList<Filter> filterList = new ArrayList<>();
         // 通过注解扫描制定的包
         Reflections reflections = new Reflections(packages);
-        // 如果该包下面有被EnableFilter注解修饰的类，那么该类的实力加入到列表中，最终返回。
+        // 如果该包下面有被EnableFilter注解修饰的类，那么该类的实例加入到列表中，最终返回。
         Set<Class<?>> filters = reflections.getTypesAnnotatedWith(EnableFilter.class);
         for (Class<?> filter : filters) {
             try {
