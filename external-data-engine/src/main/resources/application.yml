@@ -12,6 +12,10 @@ spring:
       connection-timeout: 10000
       idle-timeout: 600000
       max-lifetime: 3600000
+  data: 
+    elasticsearch:
+      cluster-nodes: localhost:9200
+      cluster-name: es-hgh
 mybatis:
   mapper-locations:
   - classpath:com/jxzj/external/data/dao/*.xml

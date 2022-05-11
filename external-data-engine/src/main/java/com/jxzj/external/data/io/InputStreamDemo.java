@@ -13,16 +13,18 @@ import java.util.Scanner;
 
 public class InputStreamDemo {
     public static void main(String[] args) {
-        InputStreamDemo.test2ByReader();
+        InputStreamDemo.test1();
     }
 
     public static void test2ByReader() {
         try {
             BufferedReader br = new BufferedReader(new FileReader(new File("./img/pingan.cookies.txt")));
             String str = null;
-            while ((str = br.readLine()) != null) {
-                System.out.println(str);
+            String s = null;
+            while ((s = br.readLine()) != null) {
+                str += s;
             }
+            System.out.println(str);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -49,15 +51,18 @@ public class InputStreamDemo {
         Scanner scanner = new Scanner(System.in);
         String nextLine = scanner.nextLine();
         try {
-            FileInputStream fileInputStream = new FileInputStream("F:\\tempFile\\face\\2.jpg");
+            FileInputStream fileInputStream = new FileInputStream("F:\\tempFile\\2.jpg");
             BufferedInputStream bis = new BufferedInputStream(fileInputStream);
             byte[] buf = new byte[1024];
             int len = 0;
+            BufferedOutputStream out = new BufferedOutputStream(new FileOutputStream("f:/tempFile/4.jpg"));
             while ((len = bis.read(buf)) != -1) {
-                System.out.println(new String(buf, 0, len));
+                System.out.println(new String(buf));
+                out.write(buf);
             }
-            BufferedOutputStream bufferedOutputStream =
-                new BufferedOutputStream(new FileOutputStream(new String(buf, 0, len)));
+            fileInputStream.close();
+            bis.close();
+            out.close();
         } catch (IOException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
