@@ -11,12 +11,12 @@ public class ReentrantLockDemoCondition {
 
     public static void main(String[] args) {
 
-        Queue queue = new Queue();
-
+        // Queue queue = new Queue();
+        //
+        // // new Thread(new ProducerThread(queue)).start();
         // new Thread(new ProducerThread(queue)).start();
-        new Thread(new ProducerThread(queue)).start();
-        new Thread(new ConsumerThread(queue)).start();
         // new Thread(new ConsumerThread(queue)).start();
+        // // new Thread(new ConsumerThread(queue)).start();
 
     }
 
