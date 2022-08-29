@@ -25,7 +25,8 @@ public class AspectBase {
 
     private static final Logger LOG = LoggerFactory.getLogger(AspectBase.class);
 
-    @Pointcut(value = "execution(* com.jxzj.external.data.aspacetdemo.ISay.sayHello(..))")
+    // @Pointcut(value = "execution(* com.jxzj.external.data.aspacetdemo.ISay.sayHello(..))")
+    @Pointcut("@annotationA(com.jxzj.external.data.aspacetdemo.InvokeLog)")
     private void aspectPointcut() {
 
     }
