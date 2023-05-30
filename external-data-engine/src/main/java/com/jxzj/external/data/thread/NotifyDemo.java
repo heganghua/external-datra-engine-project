@@ -49,6 +49,7 @@ public class NotifyDemo {
         @Override
         public void run() {
             System.out.println(name + "is waiting");
+
             synchronized (co) {
                 try {
                     co.wait();

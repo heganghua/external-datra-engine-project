@@ -47,4 +47,10 @@ public class Course implements Serializable {
         this.time = time;
     }
 
+    @Override
+    public String toString() {
+        return "Course [classId=" + classId + ", userId=" + userId + ", className=" + className + ", time=" + time
+            + "]";
+    }
+
 }

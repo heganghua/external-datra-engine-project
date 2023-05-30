@@ -1,7 +1,7 @@
 package com.jxzj.external.data.aop;
 
-public class AopDemo {
+import org.springframework.beans.factory.config.BeanPostProcessor;
 
-    public static void main(String[] args) {}
+public class AopDemo implements BeanPostProcessor {
 
 }

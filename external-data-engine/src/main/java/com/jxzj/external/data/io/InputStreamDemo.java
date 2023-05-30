@@ -11,11 +11,36 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.Scanner;
 
+/**
+ * 常用IO <br>
+ * 1、字节流<br>
+ * InputStream <br>
+ * - FileInputStream<br>
+ * - BufferedInputStream<br>
+ * 
+ * OutputStream<br>
+ * - FileOutPutStream<br>
+ * - BufferedINputStream<br>
+ * 
+ * 2、字符流<br>
+ * - 转换流：InputStreamReader - FileReader<br>
+ * - BufferedReader
+ * 
+ * - 转换流 OutputStreamWriter - FileWriter<br>
+ * - BufferedWrider
+ * 
+ * 
+ * @author ganghua
+ * @date 2023/02/07
+ */
 public class InputStreamDemo {
     public static void main(String[] args) {
-        InputStreamDemo.test1();
+        InputStreamDemo.test3ByByte();
     }
 
+    /**
+     * 字符流
+     */
     public static void test2ByReader() {
         try {
             BufferedReader br = new BufferedReader(new FileReader(new File("./img/pingan.cookies.txt")));
@@ -24,22 +49,28 @@ public class InputStreamDemo {
             while ((s = br.readLine()) != null) {
                 str += s;
             }
+
+            br.close();
             System.out.println(str);
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
+    /**
+     * 字节流
+     */
     public static void test3ByByte() {
         try {
-            BufferedInputStream bi = new BufferedInputStream(new FileInputStream(new File("./img/pingan.cookies.txt")));
-            byte[] b = new byte[1024];
+            FileInputStream bi = new FileInputStream(new File("./img/pingan.cookies.txt"));
+            byte[] b = new byte[8192];
             int end = 0;
             String st = new String();
             while ((end = bi.read(b)) != -1) {
                 st += new String(b);
             }
             System.out.println(st);
+            bi.close();
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {
@@ -49,12 +80,12 @@ public class InputStreamDemo {
 
     public static void test1() {
         Scanner scanner = new Scanner(System.in);
-        String nextLine = scanner.nextLine();
         try {
             FileInputStream fileInputStream = new FileInputStream("F:\\tempFile\\2.jpg");
             BufferedInputStream bis = new BufferedInputStream(fileInputStream);
             byte[] buf = new byte[1024];
             int len = 0;
+
             BufferedOutputStream out = new BufferedOutputStream(new FileOutputStream("f:/tempFile/4.jpg"));
             while ((len = bis.read(buf)) != -1) {
                 System.out.println(new String(buf));
@@ -64,9 +95,9 @@ public class InputStreamDemo {
             bis.close();
             out.close();
         } catch (IOException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
         scanner.close();
     }
+
 }

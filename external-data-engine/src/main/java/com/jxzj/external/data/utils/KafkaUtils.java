@@ -31,7 +31,7 @@ public class KafkaUtils {
     private AdminClient adminClient;
 
     @Autowired
-    private KafkaTemplate kafkaTemplate;
+    private KafkaTemplate<Object, Object> kafkaTemplate;
 
     /**
      * 1、初始化AdminClient '@PostConstruct该注解被用来修饰一个非静态的void（）方法。 <br>
